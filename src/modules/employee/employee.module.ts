@@ -6,7 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Employee]), CacheModule.register({isGlobal: true})],
+  imports: [
+    TypeOrmModule.forFeature([Employee]),
+    CacheModule.register({ isGlobal: true }),
+  ],
   controllers: [EmployeeController],
   providers: [EmployeeService],
 })

@@ -28,8 +28,28 @@ describe('EmployeeController', () => {
     it('should return an array of employees', async () => {
       const employeeId = 1;
       const result: EmployeeResponseDto[] = [
-        { id: 2, name: 'Jane Smith', position_name: 'dev', position_id: 3, children: [{ id: 4, name: 'Jane', position_name: 'dev', position_id: 5, children: [] }] },
-        { id: 3, name: 'Alice Johnson', position_name: 'dev', position_id: 5, children: [] },
+        {
+          id: 2,
+          name: 'Jane Smith',
+          position_name: 'dev',
+          position_id: 3,
+          children: [
+            {
+              id: 4,
+              name: 'Jane',
+              position_name: 'dev',
+              position_id: 5,
+              children: [],
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: 'Alice Johnson',
+          position_name: 'dev',
+          position_id: 5,
+          children: [],
+        },
       ];
 
       jest.spyOn(employeeService, 'getAllEmployee').mockResolvedValue(result);
@@ -44,7 +64,9 @@ describe('EmployeeController', () => {
 
       jest.spyOn(employeeService, 'getAllEmployee').mockRejectedValue(error);
 
-      await expect(employeeController.getAllEmployee(employeeId)).rejects.toThrow('Test error');
+      await expect(
+        employeeController.getAllEmployee(employeeId)
+      ).rejects.toThrow('Test error');
       expect(employeeService.getAllEmployee).toHaveBeenCalledWith(employeeId);
     });
   });

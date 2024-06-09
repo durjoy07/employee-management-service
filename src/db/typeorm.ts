@@ -5,7 +5,8 @@ dotenvConfig({ path: '.env' });
 
 export const dataSourceOptions: DataSourceOptions = {
   url:
-    process.env.DATABASE_URL || 'postgresql://questionpro_owner:kphJtyqG5O3N@ep-damp-voice-a13y5s22.ap-southeast-1.aws.neon.tech/questionpro?sslmode=require',
+    process.env.DATABASE_URL ||
+    'postgresql://questionpro_owner:kphJtyqG5O3N@ep-damp-voice-a13y5s22.ap-southeast-1.aws.neon.tech/questionpro?sslmode=require',
   type: 'postgres',
   ssl: {
     rejectUnauthorized: false,

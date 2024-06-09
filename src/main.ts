@@ -10,10 +10,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   app.useGlobalPipes(validationPipe);
-   const logger = app.get(CustomLoggerService);
+  const logger = app.get(CustomLoggerService);
   app.useGlobalFilters(new HttpExceptionFilter(logger));
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-   SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, document);
   await app.listen(process.env.PORT || 4000, () => {
     console.log(`App listening on port ${process.env.PORT || 4000}`);
   });

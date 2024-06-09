@@ -6,18 +6,15 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 export class CustomLoggerService implements LoggerService {
   private logger = createLogger({
     level: 'error',
-    format: format.combine(
-      format.timestamp(),
-      format.json()
-    ),
+    format: format.combine(format.timestamp(), format.json()),
     transports: [
       new DailyRotateFile({
         filename: 'logs/error-%DATE%.log',
         datePattern: 'YYYY-MM-DD',
         zippedArchive: true,
         maxSize: '20m',
-        maxFiles: '7d'
-      })
+        maxFiles: '7d',
+      }),
     ],
   });
 

@@ -15,15 +15,15 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
     AuthModule,
-    EmployeeModule
+    EmployeeModule,
   ],
   providers: [
     CustomLoggerService,
     {
       provide: APP_INTERCEPTOR,
       useClass: CustomLoggerService,
-    }
+    },
   ],
-  exports: [CustomLoggerService]
+  exports: [CustomLoggerService],
 })
 export class AppModule {}

@@ -1,5 +1,10 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsOptional, IsString, ValidateNested } from 'class-validator';
+import {
+  IsBoolean,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 
 export class EmployeeResponseDto {
   @IsString()
@@ -25,7 +30,7 @@ export class EmployeeResponseDto {
   @IsOptional()
   @IsBoolean()
   isDeleted?: boolean;
-    
+
   @ValidateNested({ each: true })
   @Type(() => EmployeeResponseDto)
   @IsOptional()
