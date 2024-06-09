@@ -1,0 +1,9 @@
+config:
+  target: "http://localhost:4000"
+  phases:
+    - duration: 60
+      arrivalRate: 100  # Number of new users per second
+scenarios:
+  - flow:
+      - get:
+          url: "/employee/by-id/1"
